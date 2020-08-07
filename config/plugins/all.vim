@@ -2,72 +2,75 @@
 " ---
 
 if dein#tap('denite.nvim')
-	nnoremap <silent><LocalLeader>r :<C-u>Denite -resume -refresh -no-start-filter<CR>
-	nnoremap <silent><LocalLeader>f :<C-u>Denite file/rec<CR>
-	nnoremap <silent><LocalLeader>g :<C-u>Denite grep -start-filter<CR>
-	nnoremap <silent><LocalLeader>b :<C-u>Denite buffer -default-action=switch<CR>
+	" nnoremap <silent><LocalLeader>r :<C-u>Denite -resume -refresh -no-start-filter<CR>
+	" nnoremap <silent><LocalLeader>f :<C-u>Denite file/rec<CR>
+	" nnoremap <silent><LocalLeader>g :<C-u>Denite grep -start-filter<CR>
+	" nnoremap <silent><LocalLeader>b :<C-u>Denite buffer -default-action=switch<CR>
+	nnoremap <silent><Leader>b :<C-u>Denite buffer -default-action=switch<CR>
 	nnoremap <silent><LocalLeader>i :<C-u>Denite file/old file_mru<CR>
 	nnoremap <silent><LocalLeader>d :<C-u>Denite directory_rec directory_mru -default-action=cd<CR>
 	nnoremap <silent><LocalLeader>v :<C-u>Denite neoyank -buffer-name=register<CR>
 	xnoremap <silent><LocalLeader>v :<C-u>Denite neoyank -buffer-name=register -default-action=replace<CR>
-	nnoremap <silent><LocalLeader>l :<C-u>Denite location_list -buffer-name=list -no-start-filter<CR>
-	nnoremap <silent><LocalLeader>q :<C-u>Denite quickfix -buffer-name=list -no-start-filter<CR>
+	" nnoremap <silent><LocalLeader>l :<C-u>Denite location_list -buffer-name=list -no-start-filter<CR>
+	" nnoremap <silent><LocalLeader>q :<C-u>Denite quickfix -buffer-name=list -no-start-filter<CR>
 	nnoremap <silent><LocalLeader>n :<C-u>Denite dein<CR>
-	nnoremap <silent><LocalLeader>j :<C-u>Denite jump change file/point -no-start-filter<CR>
-	nnoremap <silent><LocalLeader>u :<C-u>Denite junkfile:new junkfile -buffer-name=list<CR>
+	" nnoremap <silent><LocalLeader>j :<C-u>Denite jump change file/point -no-start-filter<CR>
+	" nnoremap <silent><LocalLeader>u :<C-u>Denite junkfile:new junkfile -buffer-name=list<CR>
 	nnoremap <silent><LocalLeader>o :<C-u>Denite outline -no-start-filter<CR>
 	nnoremap <silent><LocalLeader>s :<C-u>Denite session -buffer-name=list<CR>
-	nnoremap <silent><LocalLeader>t :<C-u>Denite tag<CR>
+	" nnoremap <silent><LocalLeader>t :<C-u>Denite tag<CR>
 	nnoremap <silent><LocalLeader>p :<C-u>Denite jump<CR>
-	nnoremap <silent><LocalLeader>h :<C-u>Denite help<CR>
-	nnoremap <silent><LocalLeader>m :<C-u>Denite file/rec -buffer-name=memo -path=~/docs/blog<CR>
+	" nnoremap <silent><LocalLeader>h :<C-u>Denite help<CR>
+	" nnoremap <silent><LocalLeader>m :<C-u>Denite file/rec -buffer-name=memo -path=~/docs/blog<CR>
 	nnoremap <silent><LocalLeader>z :<C-u>Denite z -buffer-name=list<CR>
-	nnoremap <silent><LocalLeader>; :<C-u>Denite command_history command<CR>
-	nnoremap <silent><expr><LocalLeader>/ wordcount().chars > 10000 ?
-		\ ":\<C-u>Denite -search line/external\<CR>"
-		\ : ":\<C-u>Denite -search line\<CR>"
-	nnoremap <silent><expr><LocalLeader>* wordcount().chars > 10000 ?
-		\ ":\<C-u>DeniteCursorWord -no-start-filter -search line/external\<CR>"
-		\ : ":\<C-u>DeniteCursorWord -no-start-filter -search line\<CR>"
+	" nnoremap <silent><LocalLeader>; :<C-u>Denite command_history command<CR>
+	" nnoremap <silent><expr><LocalLeader>/ wordcount().chars > 10000 ?
+	"	\ ":\<C-u>Denite -search line/external\<CR>"
+	"	\ : ":\<C-u>Denite -search line\<CR>"
+	" nnoremap <silent><expr><LocalLeader>* wordcount().chars > 10000 ?
+	"	\ ":\<C-u>DeniteCursorWord -no-start-filter -search line/external\<CR>"
+	"	\ : ":\<C-u>DeniteCursorWord -no-start-filter -search line\<CR>"
 
 	" Open Denite with word under cursor or selection
-	nnoremap <silent> <Leader>gt :DeniteCursorWord tag:include -no-start-filter -immediately<CR>
-	nnoremap <silent> <Leader>gf :DeniteCursorWord file/rec -no-start-filter<CR>
-	nnoremap <silent> <Leader>gg :DeniteCursorWord grep -no-start-filter<CR>
-	vnoremap <silent> <Leader>gg
-		\ :<C-u>call <SID>get_selection('/')<CR>
-		\ :execute 'Denite -no-start-filter grep:::'.@/<CR><CR>
+	" nnoremap <silent> <Leader>gt :DeniteCursorWord tag:include -no-start-filter -immediately<CR>
+	" nnoremap <silent> <Leader>gf :DeniteCursorWord file/rec -no-start-filter<CR>
+	" nnoremap <silent> <Leader>gg :DeniteCursorWord grep -no-start-filter<CR>
+	" vnoremap <silent> <Leader>gg
+	"	\ :<C-u>call <SID>get_selection('/')<CR>
+	"	\ :execute 'Denite -no-start-filter grep:::'.@/<CR><CR>
 
-	function! s:get_selection(cmdtype)
-		let temp = @s
-		normal! gv"sy
-		let @/ = substitute(escape(@s, '\' . a:cmdtype), '\n', '\\n', 'g')
-		let @s = temp
-	endfunction
+	" function! s:get_selection(cmdtype)
+	" 	let temp = @s
+	" 	normal! gv"sy
+	" 	let @/ = substitute(escape(@s, '\' . a:cmdtype), '\n', '\\n', 'g')
+	" 	let @s = temp
+	" endfunction
 endif
 
 if dein#tap('vim-clap')
-	" nnoremap <silent><LocalLeader>f :<C-u>Clap! files<CR>
-	" nnoremap <silent><LocalLeader>b :<C-u>Clap! buffers<CR>
-	" nnoremap <silent><LocalLeader>g :<C-u>Clap! grep<CR>
-	" nnoremap <silent><LocalLeader>j :<C-u>Clap! jumps<CR>
-	" nnoremap <silent><LocalLeader>h :<C-u>Clap! help_tags<CR>
-	" nnoremap <silent><LocalLeader>t :<C-u>Clap! tags<CR>
-	" nnoremap <silent><LocalLeader>l :<C-u>Clap! loclist<CR>
-	" nnoremap <silent><LocalLeader>q :<C-u>Clap! quickfix<CR>
-	" nnoremap <silent><LocalLeader>m :<C-u>Clap! files ~/docs/books<CR>
-	" nnoremap <silent><LocalLeader>y :<C-u>Clap! yanks<CR>
-	" nnoremap <silent><LocalLeader>/ :<C-u>Clap! lines<CR>
-	" nnoremap <silent><LocalLeader>* :<C-u>Clap! lines ++query=<cword><CR>
-	" nnoremap <silent><LocalLeader>; :<C-u>Clap! command_history<CR>
+	" let g:clap_theme = 'material_design_dark'
+	nnoremap <silent><LocalLeader>f :<C-u>Clap! files<CR>
+	nnoremap <silent><LocalLeader>b :<C-u>Clap! buffers<CR>
+	nnoremap <silent><LocalLeader>g :<C-u>Clap! grep<CR>
+	nnoremap <silent><LocalLeader>j :<C-u>Clap! jumps<CR>
+	nnoremap <silent><LocalLeader>h :<C-u>Clap! help_tags<CR>
+	nnoremap <silent><LocalLeader>t :<C-u>Clap! tags<CR>
+	nnoremap <silent><LocalLeader>l :<C-u>Clap! loclist<CR>
+	nnoremap <silent><LocalLeader>q :<C-u>Clap! quickfix<CR>
+	nnoremap <silent><LocalLeader>m :<C-u>Clap! files ~/docs/books<CR>
+	nnoremap <silent><LocalLeader>y :<C-u>Clap! yanks<CR>
+	nnoremap <silent><LocalLeader>w :<C-u>Clap! colors<CR>
+	nnoremap <silent><LocalLeader>/ :<C-u>Clap! lines<CR>
+	nnoremap <silent><LocalLeader>* :<C-u>Clap! lines ++query=<cword><CR>
+	nnoremap <silent><LocalLeader>; :<C-u>Clap! command_history<CR>
 
-	" nnoremap <silent><Leader>gl :<C-u>Clap! commits<CR>
-	" nnoremap <silent><Leader>gt :<C-u>Clap! tags ++query=<cword><CR>
-	" xnoremap <silent><Leader>gt :<C-u>Clap! tags ++query=@visual<CR><CR>
-	" nnoremap <silent><Leader>gf :<C-u>Clap! files ++query=<cword><CR>
-	" xnoremap <silent><Leader>gf :<C-u>Clap! files ++query=@visual<CR><CR>
-	" nnoremap <silent><Leader>gg :<C-u>Clap! grep ++query=<cword><CR>
-	" xnoremap <silent><Leader>gg :<C-u>Clap! grep ++query=@visual<CR><CR>
+	nnoremap <silent><Leader>gl :<C-u>Clap! commits<CR>
+	nnoremap <silent><Leader>gt :<C-u>Clap! tags ++query=<cword><CR>
+	xnoremap <silent><Leader>gt :<C-u>Clap! tags ++query=@visual<CR><CR>
+	nnoremap <silent><Leader>gf :<C-u>Clap! files ++query=<cword><CR>
+	xnoremap <silent><Leader>gf :<C-u>Clap! files ++query=@visual<CR><CR>
+	nnoremap <silent><Leader>gg :<C-u>Clap! grep ++query=<cword><CR>
+	xnoremap <silent><Leader>gg :<C-u>Clap! grep ++query=@visual<CR><CR>
 
 	autocmd user_events FileType clap_input call s:clap_mappings()
 
@@ -85,7 +88,7 @@ if dein#tap('vim-clap')
 		nnoremap <silent> <buffer> q     :<c-u>call clap#handler#exit()<CR>
 		nnoremap <silent> <buffer> <Esc> :call clap#handler#exit()<CR>
 		inoremap <silent> <buffer> <Esc> <C-R>=clap#navigation#linewise('down')<CR><C-R>=clap#navigation#linewise('up')<CR><Esc>
-		inoremap <silent> <buffer> jj    <C-R>=clap#navigation#linewise('down')<CR><C-R>=clap#navigation#linewise('up')<CR><Esc>
+		inoremap <silent> <buffer> fd     <C-R>=clap#navigation#linewise('down')<CR><C-R>=clap#navigation#linewise('up')<CR><Esc>
 	endfunction
 endif
 
@@ -115,7 +118,7 @@ endif
 if dein#tap('emmet-vim')
 	autocmd user_events FileType html,css,javascript,javascriptreact,svelte
 		\ EmmetInstall
-		\ | imap <buffer> <C-Return> <Plug>(emmet-expand-abbr)
+		"\ | imap <buffer> <C-Return> <Plug>(emmet-expand-abbr)
 endif
 
 if dein#tap('vim-gitgutter')

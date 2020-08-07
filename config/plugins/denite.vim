@@ -8,22 +8,59 @@ if exists('*denite#start')
 endif
 
 " Denite general settings
+" call denite#custom#option('_', {
+"	\ 'prompt': '❯',
+"	\ 'start_filter': v:true,
+"	\ 'smartcase': v:true,
+"	\ 'vertical_preview': v:true,
+"	\ 'source_names': 'short',
+"	\ 'max_dynamic_update_candidates': 50000,
+"	\ })
+" 
+" " Use Neovim's floating window
+" if has('nvim-0.4')
+" 	call denite#custom#option('_', {
+"		\ 'highlight_filter_background': 'NormalFloat',
+"		\ 'split': 'floating',
+"		\ 'filter_split_direction': 'floating',
+"		\ 'floating_preview': v:true,
+"		\ })
+" endif
+
+
 call denite#custom#option('_', {
 	\ 'prompt': '❯',
 	\ 'start_filter': v:true,
 	\ 'smartcase': v:true,
 	\ 'vertical_preview': v:true,
 	\ 'source_names': 'short',
-	\ 'max_dynamic_update_candidates': 50000,
+	\ 'max_dynamic_update_candidates': 10000,
 	\ })
 
-" Use Neovim's floating window
+
 if has('nvim-0.4')
 	call denite#custom#option('_', {
-		\ 'highlight_filter_background': 'NormalFloat',
+		"\ 'highlight_filter_background': 'NormalFloat',
 		\ 'split': 'floating',
 		\ 'filter_split_direction': 'floating',
 		\ 'floating_preview': v:true,
+		\ 'match-highlight': v:true,
+		"\ 'winrow': v:true,
+		"\ 'auto_resize': v:true,
+		"\ 'highlight_mode_insert': 'Visual',
+		"\ 'highlight_mode_normal': 'Visual',
+		"\ 'prompt_highlight': 'Function',
+		"\ 'prompt_highlight': 'Search',
+		"\ 'highlight_matched_char': 'Function',
+		"\ 'highlight_matched_range': 'Normal',
+		"\ 'highlight_matched_char': 'Search',
+		\ 'highlight_matched_char': 'QuickFixLine',
+		"\ 'highlight_matched_range': 'Normal',
+		"\ 'highlight_matched_range': 'Visual',
+		\ 'highlight_matched_range': 'QuickFixLine',
+		\ 'highlight_window_background': 'Visual',
+		\ 'highlight_filter_background': 'DiffAdd',
+		"\ 'highlight_filter_background': 'Visual',
 		\ })
 endif
 
@@ -194,7 +231,7 @@ function! s:denite_filter_settings() abort
 	endif
 
 	" Denite Filter window key mappings
-	imap <silent><buffer> jj          <Plug>(denite_filter_quit)
+	imap <silent><buffer> fd          <Plug>(denite_filter_quit)
 	nmap <silent><buffer> <Esc>       <Plug>(denite_filter_quit)
 	imap <silent><buffer> <Esc>       <Plug>(denite_filter_quit)
 	nmap <silent><buffer> <C-c>       <Plug>(denite_filter_quit)

@@ -260,10 +260,10 @@ nmap <silent> <Leader>h
 " Terminal
 if exists(':tnoremap')
 	if has('nvim')
-		tnoremap   jj         <C-\><C-n>
+		tnoremap   fd         <C-\><C-n>
 	else
 		tnoremap   <ESC><ESC>  <C-w>N
-		tnoremap   jj          <C-w>N
+		tnoremap   fd          <C-w>N
 	endif
 endif
 
