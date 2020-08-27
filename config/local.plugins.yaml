@@ -89,12 +89,6 @@
     let g:gfm_syntax_highlight_emoji = 0
     let g:gfm_syntax_enable_filetypes = ['markdown']
 
-# Javascript related
-- repo: pangloss/vim-javascript
-  on_ft: [ javascript, javascriptreact ]
-  hook_add: |
-    let g:javascript_plugin_jsdoc = 1
-    let g:javascript_plugin_flow = 1
 
 - repo: HerringtonDarkholme/yats.vim
   on_ft: [ typescript, typescriptreact ]
@@ -258,8 +252,7 @@
   hook_add: let g:vmt_auto_update_on_save = 0
 
 - repo: liuchengxu/vista.vim
-  if: 0
-  on_cmd: Vista
+  on_cmd: Vist
   hook_add: |
     let g:vista#renderer#enable_icon = 1
     let g:vista_echo_cursor_strategy = 'scroll'
@@ -685,6 +678,14 @@
 - repo: alvan/vim-closetag
 - repo: AndrewRadev/tagalong.vim
 
+# Javascript related
+- repo: pangloss/vim-javascript
+  on_ft: [ javascript, javascriptreact, javascript.jsx, typescript, typescriptreact, typescript.tsx ]
+  build: 'make install'
+  hook_add: |
+    let g:javascript_plugin_jsdoc = 1
+    let g:javascript_plugin_flow = 1
+
 - repo: dsznajder/vscode-es7-javascript-react-snippets
   merged: 0
   build: 'yarn install --frozen-lockfile && yarn compile'
@@ -700,4 +701,5 @@
 - repo: vn-ki/coc-clap
 - repo: tpope/vim-fugitive
 - repo: tpope/vim-surround
+- repo: terryma/vim-multiple-cursors
   #  vim: set ts=2 sw=2 tw=80 et :

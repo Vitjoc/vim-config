@@ -6,6 +6,8 @@ let g:EasyMotion_smartcase = 1
 " <Leader>f{char} to move to {char}
 map  <Leader><Leader>f <Plug>(easymotion-bd-f)
 nmap <Leader><Leader>f <Plug>(easymotion-overwin-f)
+map  <A-f> <Plug>(easymotion-bd-f)
+nmap <A-f> <Plug>(easymotion-overwin-f)
 
 " s{char}{char} to move to {char}{char}
 " nmap s <Plug>(easymotion-overwin-f2)
@@ -13,7 +15,9 @@ nmap <Leader><Leader>f <Plug>(easymotion-overwin-f)
 " Move to line
 map <Leader><Leader>l <Plug>(easymotion-bd-jk)
 nmap <Leader><Leader>l <Plug>(easymotion-overwin-line)
+map <A-l> <Plug>(easymotion-bd-jk)
+nmap <A-l> <Plug>(easymotion-overwin-line)
 
 " Move to word
-" map  <Leader>w <Plug>(easymotion-bd-w)
-" nmap <Leader>w <Plug>(easymotion-overwin-w)
+map  <A-w> <Plug>(easymotion-bd-w)
+nmap <A-w> <Plug>(easymotion-overwin-w)

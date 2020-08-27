@@ -12,6 +12,8 @@ source $VIM_PATH/config/local/plugins/vim_move.vim
 source $VIM_PATH/config/local/plugins/translator.vim
 source $VIM_PATH/config/local/plugins/closetag.vim
 source $VIM_PATH/config/local/plugins/startify.vim
+source $VIM_PATH/config/local/plugins/vista.vim
+source $VIM_PATH/config/local/plugins/multiple_cursors.vim
 
 
 " Drag current line/s vertically and auto-indent
@@ -70,5 +72,18 @@ function! Handle_Win_Enter()
   endif
 endfunction
 
+
+nnoremap <Leader>te :terminal<CR>
+
 " Start new line from any cursor position in insert-mode
 inoremap <C-l> <C-o>o
+
+" === vim-jsdoc shortcuts ==="
+" Generate jsdoc for function under cursor
+nmap <leader>z :JsDoc<CR>
+
+" Ctrl-j/k deletes blank line below/above, and Alt-j/k inserts.
+" nnoremap <silent><C-j> m`:silent +g/\m^\s*$/d<CR>``:noh<CR>
+" nnoremap <silent><C-k> m`:silent -g/\m^\s*$/d<CR>``:noh<CR>
+nnoremap <silent><A-o> :set paste<CR>m`o<Esc>``:set nopaste<CR>
+nnoremap <silent><A-i> :set paste<CR>m`O<Esc>``:set nopaste<CR>
